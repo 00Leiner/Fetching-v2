@@ -12,7 +12,8 @@ export interface teacherCoursesModel{
 
 export interface teacherModel {
   _id?: string;
-  name?: string;
+  fname?: string;
+  sname?: string;
   specialized?: teacherCourseModel;
 }
 export interface teachersModel {

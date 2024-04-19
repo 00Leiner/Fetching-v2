@@ -59,9 +59,10 @@ export class Teachers{
         if (teacherList && teacherList.allTeachers) {
             const allTeacherDetails = teacherList.allTeachers.map((teacher: teacherModel) => {
                 const _id = teacher._id;
-                const name = teacher.name;
+                const fname = teacher.fname;
+                const sname = teacher.sname;
                 const specialized = teacher.specialized;
-                return { _id, name, specialized };
+                return { _id, fname, sname, specialized };
         });
             return allTeacherDetails;
 
@@ -75,13 +76,13 @@ export class Teachers{
         return response
     }
 
-    async create(getName: string, getSpecialized: any){
-        const response = await createTeacher(getName, getSpecialized);
+    async create(getFname: string, getSname: string, getSpecialized: any){
+        const response = await createTeacher(getFname, getSname, getSpecialized);
         return response
     }
 
-    async update(getID: string, getName: string, getSpecialized: teacherCourseModel[]){
-        const response = await updateTeacher(getID, getName, getSpecialized);
+    async update(getID: string, getFname: string, getSname: string, getSpecialized: teacherCourseModel[]){
+        const response = await updateTeacher(getID, getFname, getSname, getSpecialized);
         return response
     }
 
@@ -468,7 +469,7 @@ async function approach() {
         // const del = await user.delete( '6563abe53975c81bebf4de20') // user id you want to delete
     */
 
-    const teacher = new Teachers();
+    /*  const teacher = new Teachers();
         
         // //read a single teacher
         // const read = await teacher.read('655e35a67c3c3cca9a957b20');//id
@@ -486,6 +487,7 @@ async function approach() {
         // //create teacher
         // const create = await teacher.create(
         //     'Davis', 
+        //     'sa',
         //     [
         //         {
         //             code: "IT 3206",
@@ -497,19 +499,19 @@ async function approach() {
         //     )//  name, specialized
         // console.log(create)// _id, name, specialized
 
-        // //update teacher
-        const update = await teacher.update( '6618c3303a46344ee74e6ab7', 'Ronnie Edec', [
-            {code: 'CC 1100',
-            description: "Introduction to Computing",
-            units: "5",
-            type: "Laboratory"
-        }
-        ])// _id, name, specialized
-        console.log(update) // _id, name, specialized
+        // // //update teacher
+        // const update = await teacher.update( '662277eb111608cb26ead79d', 'Davis', 'sa', [
+        //     {code: 'CC 1100',
+        //     description: "Introduction to Computing",
+        //     units: "5",
+        //     type: "Laboratory"
+        // }
+        // ])// _id, name, specialized
+        // console.log(update) // _id, name, specialized
 
         // //delete teacher
-        // const del = await teacher.delete( '6564e365bf64d6840d2b62e0') //id you want to delete
-    
+        // const del = await teacher.delete( '662275df5eb349b42d801d1a') //id you want to delete
+    */
 
     /*  const room = new Rooms();
         

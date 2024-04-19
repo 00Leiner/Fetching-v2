@@ -9,7 +9,8 @@ export const readAllTeachers = async (): Promise<{ allTeachers: Array<teachersMo
     if (Array.isArray(response.teachers)) {
       const allTeachers = response.teachers.map((teacher: teacherModel) => ({
         _id: teacher._id,
-        name: teacher.name,
+        fname: teacher.fname,
+        sname: teacher.sname,
         specialized: teacher.specialized
       }));
 
@@ -31,10 +32,11 @@ export const readTeacher = async (getID: string): Promise<teachersModel | any> =
     const response: teachersModel = await readTeacherData(teacher);
 
     const _id = response.teacher._id;
-    const name = response.teacher.name;
+    const fname = response.teacher.fname;
+    const sname = response.teacher.sname;
     const specialized = response.teacher.specialized;
 
-    return { _id, name, specialized };
+    return { _id, fname, sname, specialized };
     
 
 
@@ -43,9 +45,10 @@ export const readTeacher = async (getID: string): Promise<teachersModel | any> =
   }
 };
 
-export const createTeacher = async (getName: string, getSpecialized: any) => {
+export const createTeacher = async (getFname: string, getSname: string, getSpecialized: any) => {
   const newTeacher: teacherModel = {
-    name: getName,
+    fname: getFname,
+    sname: getSname,
     specialized: getSpecialized,
   };
   try {
@@ -57,10 +60,11 @@ export const createTeacher = async (getName: string, getSpecialized: any) => {
   }
 };
 
-export const updateTeacher = async (getID: string, getName: string, getSpecialized: any) => {
+export const updateTeacher = async (getID: string, getFname: string, getSname: string, getSpecialized: any) => {
   const newTeacher: teacherModel = {
     _id: getID,
-    name: getName,
+    fname: getFname,
+    sname: getSname,
     specialized: getSpecialized
   };
   try {
