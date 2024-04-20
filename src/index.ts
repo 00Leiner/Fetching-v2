@@ -438,6 +438,88 @@ export class Curriculum{
 }
 
 
+async function majorlist() {
+    const curriculum = new Curriculum();
+        
+    const readAll = await curriculum.readAll();
+    if (readAll) {
+        // Create a Set to store unique major values
+        const uniqueMajors = new Set();
+
+        // Iterate over each curriculum and add its major to the Set
+        readAll.forEach((curriculum: any) => {
+            uniqueMajors.add(curriculum.major);
+        });
+
+        // Convert the Set back to an array and log the unique major values
+        return(Array.from(uniqueMajors).join(', '));
+    } else {
+        console.error('Failed to read all curriculum.');
+    }
+}
+
+async function yearlist(major: any) {
+    const curriculum = new Curriculum();
+    
+    const readAll = await curriculum.readAll();
+    if (readAll) {
+        // Filter curriculums based on the provided major
+        const filteredCurriculums = readAll.filter((curriculum: any) => curriculum.major === major);
+        
+        // Create a Set to store unique years for the filtered curriculums
+        const uniqueYears = new Set();
+
+        // Iterate over the filtered curriculums and add their years to the Set
+        filteredCurriculums.forEach((curriculum: any) => {
+            uniqueYears.add(curriculum.year);
+        });
+
+        // Convert the Set back to an array and return the unique years
+        return Array.from(uniqueYears);
+    } else {
+        console.error('Failed to read all curriculum.');
+        return [];
+    }
+}
+
+async function semesterlist(major: any) {
+    const curriculum = new Curriculum();
+    
+    const readAll = await curriculum.readAll();
+    if (readAll) {
+        // Filter curriculums based on the provided major
+        const filteredCurriculums = readAll.filter((curriculum: any) => curriculum.major === major);
+        
+        // Create a Set to store unique years for the filtered curriculums
+        const uniqueSemester = new Set();
+
+        // Iterate over the filtered curriculums and add their years to the Set
+        filteredCurriculums.forEach((curriculum: any) => {
+            uniqueSemester.add(curriculum.semester);
+        });
+
+        // Convert the Set back to an array and return the unique years
+        return Array.from(uniqueSemester);
+    } else {
+        console.error('Failed to read all curriculum.');
+        return [];
+    }
+}
+
+async function aproach_in_list() {
+    // const major = await majorlist()
+    // console.log(major)
+    // const year = await yearlist('Business Analytics')
+    // console.log(year)
+    // const semester = await semesterlist('Business Analytics')
+    // console.log(semester)
+}
+aproach_in_list()
+
+
+
+
+
 
 // here's how we handle the functions
 async function approach() {
@@ -723,7 +805,7 @@ async function approach() {
     */
 
     
-    const curriculum = new Curriculum();
+    /* const curriculum = new Curriculum();
         
     // //read a single curriculum
     // const read = await curriculum.read('6619012220726f92158fed10');//id
@@ -775,7 +857,7 @@ async function approach() {
     // //delete curriculum
     // const del = await curriculum.delete( '6619012220726f92158fed10') //id you want to delete
 
-
+    */
 }
 
 approach()
