@@ -364,10 +364,11 @@ export class Curriculum{
             const allCurriculumDetails = curriculumList.allCurriculums.map((Newcurriculum: curriculumModel) => {
                 const _id = Newcurriculum._id;
                 const program = Newcurriculum.program;
+                const major = Newcurriculum.major;
                 const year = Newcurriculum.year;
                 const semester = Newcurriculum.semester;
                 const curriculum = Newcurriculum.curriculum;
-                return { _id, program, year, semester, curriculum };
+                return { _id, program, major, year, semester, curriculum };
         });
             return allCurriculumDetails;
 
@@ -469,7 +470,7 @@ async function approach() {
         // const del = await user.delete( '6563abe53975c81bebf4de20') // user id you want to delete
     */
 
-    /*  const teacher = new Teachers();
+    /* const teacher = new Teachers();
         
         // //read a single teacher
         // const read = await teacher.read('655e35a67c3c3cca9a957b20');//id
@@ -480,9 +481,11 @@ async function approach() {
         // if (readAll) {
         //     //read id 
         //     console.log('User IDs:', readAll.map((teacher: teacherModel) => teacher._id).join(', ')); //map function is the same function of for loop 
+            
         // } else {
         //     console.error('Failed to read all users.');
         // }
+
 
         // //create teacher
         // const create = await teacher.create(
@@ -719,20 +722,28 @@ async function approach() {
         // console.log(response.courseCode)
     */
 
-        /*
+    
     const curriculum = new Curriculum();
         
     // //read a single curriculum
     // const read = await curriculum.read('6619012220726f92158fed10');//id
     // console.log(read)//  _id, name, specialized
 
-    // //read all curriculum
-    // const readAll = await curriculum.readAll()
+    // // Read all curriculum
+    // const readAll = await curriculum.readAll();
     // if (readAll) {
-    //     //read id 
-    //     console.log('User IDs:', readAll.map((curriculum: curriculumModel) => curriculum._id).join(', ')); //map function is the same function of for loop 
+    //     // Create a Set to store unique major values
+    //     const uniqueMajors = new Set();
+
+    //     // Iterate over each curriculum and add its major to the Set
+    //     readAll.forEach((curriculum: any) => {
+    //         uniqueMajors.add(curriculum.major);
+    //     });
+
+    //     // Convert the Set back to an array and log the unique major values
+    //     console.log( Array.from(uniqueMajors).join(', '));
     // } else {
-    //     console.error('Failed to read all users.');
+    //     console.error('Failed to read all curriculum.');
     // }
 
     // //create curriculum
@@ -763,7 +774,6 @@ async function approach() {
 
     // //delete curriculum
     // const del = await curriculum.delete( '6619012220726f92158fed10') //id you want to delete
-*/
 
 
 }

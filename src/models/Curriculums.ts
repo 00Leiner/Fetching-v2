@@ -13,9 +13,9 @@ export interface curriculumCoursesModel{
 export interface curriculumModel {
   _id?: string;
   program?: string;
+  major?: string;
   year?: string;
   semester?: string;
-  major?: string;
   curriculum?: curriculumCourseModel;
 }
 export interface curriculumsModel {

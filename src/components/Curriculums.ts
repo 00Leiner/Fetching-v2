@@ -10,9 +10,9 @@ export const readAllCurriculums = async (): Promise<{ allCurriculums: Array<curr
       const allCurriculums = response.curriculums.map((curriculum: curriculumModel) => ({
         _id: curriculum._id,
         program: curriculum.program,
+        major: curriculum.major,
         year: curriculum.year,
         semester: curriculum.semester,
-        major: curriculum.major,
         curriculum: curriculum.curriculum
       }));
 
