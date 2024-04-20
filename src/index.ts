@@ -437,24 +437,47 @@ export class Curriculum{
     }
 }
 
-
-async function majorlist() {
+async function programlist() {
     const curriculum = new Curriculum();
         
     const readAll = await curriculum.readAll();
     if (readAll) {
         // Create a Set to store unique major values
-        const uniqueMajors = new Set();
+        const uniquePrograms = new Set();
 
         // Iterate over each curriculum and add its major to the Set
         readAll.forEach((curriculum: any) => {
-            uniqueMajors.add(curriculum.major);
+            uniquePrograms.add(curriculum.program);
         });
 
         // Convert the Set back to an array and log the unique major values
-        return(Array.from(uniqueMajors).join(', '));
+        return(Array.from(uniquePrograms).join(', '));
     } else {
         console.error('Failed to read all curriculum.');
+    }
+}
+
+async function majorlist(program: any) {
+    const curriculum = new Curriculum();
+    
+    const readAll = await curriculum.readAll();
+    if (readAll) {
+        // Filter curriculums based on the provided major
+        const filteredCurriculums = readAll.filter((curriculum: any) => curriculum.program === program);
+        
+        // Create a Set to store unique years for the filtered curriculums
+        const uniqueMajors = new Set();
+
+        // Iterate over the filtered curriculums and add their years to the Set
+        filteredCurriculums.forEach((curriculum: any) => {
+            uniqueMajors.add(curriculum.major);
+        });
+
+        // Convert the Set back to an array and return the unique years
+        return Array.from(uniqueMajors);
+    } else {
+        console.error('Failed to read all curriculum.');
+        return [];
     }
 }
 
@@ -507,7 +530,9 @@ async function semesterlist(major: any) {
 }
 
 async function aproach_in_list() {
-    // const major = await majorlist()
+    // const program = await programlist()
+    // console.log(program)
+    // const major = await majorlist('BSIT')
     // console.log(major)
     // const year = await yearlist('Business Analytics')
     // console.log(year)
