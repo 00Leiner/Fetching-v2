@@ -13,6 +13,26 @@ import {  studentModel } from './models/Students';
 import { teacherCourseModel, teacherModel } from './models/Teachers';
 import { userModel, usersModel } from './models/Users';
 
+
+// async function sample() {
+//     const data = await fetchInstructorData();
+    
+//     if (data !== null) {
+//         data.forEach((program) => {
+//             console.log(`first name: ${program.fname}, surname: ${program.sname}`);
+//             console.log('Courses:');
+//             program.specialized.forEach((course, index) => {
+//                 console.log(`  Course ${index + 1}: ${course.code} - ${course.description}`);
+//             });
+//             console.log('------------------------------------');
+//         });
+//     } else {
+//         console.error('Failed to fetch curriculum data.');
+//     }
+// }
+// sample();
+
+
 export class Users{
     async readAll() {
         const userList = await readAllUsers();
@@ -540,9 +560,6 @@ async function aproach_in_list() {
     // console.log(semester)
 }
 aproach_in_list()
-
-
-
 
 
 
