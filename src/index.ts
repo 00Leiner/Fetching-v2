@@ -1,7 +1,7 @@
 import { readAllCourses, readCourse, createCourse, updateCourse, deleteCourse } from './components/Courses';
 import { addCurriculumCourse, createCurriculum, deleteCurriculum, deleteCurriculumCourses, readAllCurriculumCourses, readAllCurriculums, readCurriculum, readCurriculumCourse, updateCurriculum, updateCurriculumCourse } from './components/Curriculums';
 import { createRoom, deleteRoom, readAllRooms, readRoom, updateRoom } from './components/Rooms';
-import { deleteAllOptions, readAllOptions, readAllProgram, readSingleProgram, readAllSchedule, readSchedule } from './components/Schedule';
+import { deleteAllOptions, readAllOptions, readAllProgram } from './components/Schedule'; //, readAllSchedule, readSchedule, readSingleProgram
 import { readAllStudents, readStudent, createStudent, updateStudent, deleteStudent } from './components/Students';
 import { addTeacherCourse, createTeacher, deleteTeacher, deleteTeacherCourses, readAllTeacherCourses, readAllTeachers, readTeacher, readTeacherCourse, updateTeacher, updateTeacherCourse } from './components/Teachers';
 import { readAllUsers, createUser, updateUser, deleteUser, readUser } from './components/Users'
@@ -314,9 +314,8 @@ export class Schedules{
         if (response && response.allSchedules) {
             const allresponseDetails = response.allSchedules.map((option: optionsModel) => {
                 const _id = option._id;
-                const options = option.options;
                 const programs = option.programs;
-                return { _id, options, programs };
+                return { _id, programs };
         });
             return allresponseDetails;
 
@@ -325,55 +324,55 @@ export class Schedules{
         }
     }
 
-    async readAllPrograms(scheduleId: string) {
-        const response = await readAllProgram(scheduleId);
+    // async readAllPrograms(scheduleId: string) {
+    //     const response = await readAllProgram(scheduleId);
 
-        if (Array.isArray(response.allSchedules)) {
-            const allSchedules: scheduleModel[] = response.allSchedules.map((programs: scheduleModel) => ({
-              _id: programs._id,
-              program: programs.program,
-              year: programs.year,
-              semester: programs.semester,
-              block: programs.block,
-              sched: programs.sched
-            }));
+    //     if (Array.isArray(response.allSchedules)) {
+    //         const allSchedules: scheduleModel[] = response.allSchedules.map((programs: scheduleModel) => ({
+    //           _id: programs._id,
+    //           program: programs.program,
+    //           year: programs.year,
+    //           semester: programs.semester,
+    //           block: programs.block,
+    //           sched: programs.sched
+    //         }));
           
-            return { allSchedules };
-          }
-    }
+    //         return { allSchedules };
+    //       }
+    // }
 
-    async readsingleProgram(scheduleId: string, programId: string ) {
-        const response = await readSingleProgram(scheduleId,programId);
-        return response
-    }
+    // async readsingleProgram(scheduleId: string, programId: string ) {
+    //     const response = await readSingleProgram(scheduleId,programId);
+    //     return response
+    // }
 
-    async readSchedule(scheduleId: string, programId: string) {
-        const response = await readAllSchedule(scheduleId, programId);
+    // async readSchedule(scheduleId: string, programId: string) {
+    //     const response = await readAllSchedule(scheduleId, programId);
 
-        if (response && response.allSchedules) {
-            const allresponseDetails = response.allSchedules.map((sched: scheduleItemModel) => {
-                const _id = sched._id;
-                const courseCode = sched.courseCode;
-                const courseDescription = sched.courseDescription;
-                const courseUnit = sched.courseUnit;
-                const day = sched.day;
-                const time = sched.time;
-                const room = sched.room;
-                const instructor = sched.instructor;
+    //     if (response && response.allSchedules) {
+    //         const allresponseDetails = response.allSchedules.map((sched: scheduleItemModel) => {
+    //             const _id = sched._id;
+    //             const courseCode = sched.courseCode;
+    //             const courseDescription = sched.courseDescription;
+    //             const courseUnit = sched.courseUnit;
+    //             const day = sched.day;
+    //             const time = sched.time;
+    //             const room = sched.room;
+    //             const instructor = sched.instructor;
 
-                return { _id, courseCode, courseDescription, courseUnit, day, time, room, instructor };
-        });
-            return allresponseDetails;
+    //             return { _id, courseCode, courseDescription, courseUnit, day, time, room, instructor };
+    //     });
+    //         return allresponseDetails;
 
-        } else {
-            console.error('Failed to fetch schedule data or no schedule found.');
-        }
-    }
+    //     } else {
+    //         console.error('Failed to fetch schedule data or no schedule found.');
+    //     }
+    // }
 
-    async readSingleSchedule(scheduleId: string, programId: string, schedId: string) {
-        const response = await readSchedule(scheduleId, programId, schedId);
-        return response
-    }
+    // async readSingleSchedule(scheduleId: string, programId: string, schedId: string) {
+    //     const response = await readSchedule(scheduleId, programId, schedId);
+    //     return response
+    // }
 }
 
 export class Curriculum{
@@ -552,9 +551,9 @@ async function semesterlist(major: any) {
 async function aproach_in_list() {
     // const program = await programlist()
     // console.log(program)
-    // const major = await majorlist('BSIT')
+    // const major = await majorlist('BSCS')
     // console.log(major)
-    // const year = await yearlist('Business Analytics')
+    // const year = await yearlist('Data Science')
     // console.log(year)
     // const semester = await semesterlist('Business Analytics')
     // console.log(semester)
@@ -809,7 +808,7 @@ async function approach() {
         //     )   
         */
         
-    /*    const schedule = new Schedules()
+    /* const schedule = new Schedules()
 
         // const response = await schedule.deleteAll()
         // console.log(response)
@@ -898,7 +897,6 @@ async function approach() {
 
     // //delete curriculum
     // const del = await curriculum.delete( '6619012220726f92158fed10') //id you want to delete
-
     */
 }
 

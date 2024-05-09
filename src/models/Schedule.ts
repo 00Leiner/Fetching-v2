@@ -1,12 +1,18 @@
+export interface schedInformation{
+  schedNum?: string,
+  room?: string,
+  day?: string,
+  startTime?: string, 
+  endTime?: string, 
+}
+
 export interface scheduleItemModel{
     _id?: string;
     courseCode?: string,
     courseDescription?: string,
     courseUnit?: string,
-    day?: string,
-    time?: string, 
-    room?: string,
     instructor?: string,
+    schedule?: schedInformation
   }
 
 export interface allScheduleItemModel{
@@ -29,7 +35,6 @@ export interface allScheduleModel{
 
 export interface optionsModel{
   _id?: string,
-  options?: string,
   programs?: scheduleModel;
 };
 
